@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Disembodied Head</title>
+    <style>
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
+        background-color: black;
+      }
+      #video-background {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        z-index: -1;
+      }
+      #logo {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 100px;
+        height: auto;
+        animation: moveLogo 20s linear infinite;
+      }
+      @keyframes moveLogo {
+        0% {
+          left: -100px;
+        }
+        100% {
+          left: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <video id="video-background" autoplay loop muted playsinline>
+      <source
+        src="src\assets\socials\tiktok\The Disembodied Head 1080p.mp4"
+        type="video/mp4"
+      />
+      Your browser does not support the video tag.
+    </video>
+
+    <img
+      id="logo"
+      src="src/assets/logos/dh_white.svg"
+      alt="The Disembodied Head"
+    />
+
+    <script>
+      document.addEventListener("DOMContentLoaded", (event) => {
+        const video = document.getElementById("video-background");
+        video.play();
+      });
+    </script>
+  </body>
+</html>
