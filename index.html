@@ -5,6 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Disembodied Head</title>
     <link rel="icon" href="data:," />
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-9REJENCPQE"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-9REJENCPQE");
+    </script>
     <style>
       body,
       html {
@@ -26,14 +40,15 @@
         height: 100%;
         width: auto;
         position: absolute;
-        animation: moveLogo 20s linear infinite;
+        left: calc(-1 * var(--logo-width));
+        animation: moveLogo var(--animation-duration) linear infinite;
       }
       @keyframes moveLogo {
         0% {
-          transform: translateX(-100%);
+          transform: translateX(0);
         }
         100% {
-          transform: translateX(100%);
+          transform: translateX(calc(100vw + var(--logo-width)));
         }
       }
     </style>
@@ -46,5 +61,29 @@
         alt="The Disembodied Head"
       />
     </div>
+    <script>
+      function updateLogoAnimation() {
+        const logo = document.getElementById("logo");
+        const logoWidth = logo.offsetWidth;
+        const screenWidth = window.innerWidth;
+
+        document.documentElement.style.setProperty(
+          "--logo-width",
+          `${logoWidth}px`
+        );
+
+        // Calculate animation duration based on screen width
+        // Adjust the factor (20) to change the speed
+        const animationDuration = (screenWidth + logoWidth) / 20;
+        document.documentElement.style.setProperty(
+          "--animation-duration",
+          `${animationDuration}s`
+        );
+      }
+
+      // Run on load and resize
+      window.addEventListener("load", updateLogoAnimation);
+      window.addEventListener("resize", updateLogoAnimation);
+    </script>
   </body>
 </html>
