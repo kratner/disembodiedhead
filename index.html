@@ -16,7 +16,6 @@
         dataLayer.push(arguments);
       }
       gtag("js", new Date());
-
       gtag("config", "G-9REJENCPQE");
     </script>
     <style>
@@ -30,10 +29,10 @@
       }
       #logo-container {
         position: absolute;
-        bottom: 33%; /* Position in the lower third of the screen */
+        bottom: 33%;
         left: 0;
         width: 100%;
-        height: 50vh; /* 50% of the viewport height */
+        height: 50vh;
         overflow: hidden;
       }
       #logo {
@@ -51,6 +50,38 @@
           transform: translateX(calc(100vw + var(--logo-width)));
         }
       }
+      #hanging-head {
+        position: absolute;
+        top: -15%; /* Moved up by 15% of its height */
+        left: 50%;
+        transform: translateX(-50%);
+        width: 30vw; /* Adjust size as needed */
+        max-width: 300px;
+        height: auto; /* Ensure aspect ratio is maintained */
+        opacity: 0;
+        animation: fadeIn 2s ease-out forwards, swing 4s ease-in-out infinite;
+        transform-origin: 50% 15%; /* Adjusted swing origin to new position */
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      @keyframes swing {
+        0%,
+        100% {
+          transform: translateX(-50%) rotate(0deg);
+        }
+        25% {
+          transform: translateX(-50%) rotate(-5deg);
+        }
+        75% {
+          transform: translateX(-50%) rotate(5deg);
+        }
+      }
     </style>
   </head>
   <body>
@@ -61,27 +92,26 @@
         alt="The Disembodied Head"
       />
     </div>
+    <img
+      id="hanging-head"
+      src="src/assets/images/head.svg"
+      alt="Hanging Head"
+    />
     <script>
       function updateLogoAnimation() {
         const logo = document.getElementById("logo");
         const logoWidth = logo.offsetWidth;
         const screenWidth = window.innerWidth;
-
         document.documentElement.style.setProperty(
           "--logo-width",
           `${logoWidth}px`
         );
-
-        // Calculate animation duration based on screen width
-        // Adjust the factor (20) to change the speed
         const animationDuration = (screenWidth + logoWidth) / 20;
         document.documentElement.style.setProperty(
           "--animation-duration",
           `${animationDuration}s`
         );
       }
-
-      // Run on load and resize
       window.addEventListener("load", updateLogoAnimation);
       window.addEventListener("resize", updateLogoAnimation);
     </script>
