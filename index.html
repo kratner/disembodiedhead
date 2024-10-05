@@ -40,7 +40,7 @@
       }
       #hanging-head {
         position: fixed;
-        top: -5vh;
+        top: calc(-5vh - 20px); /* Moved up by 20 pixels */
         left: 50%;
         transform: translateX(-50%);
         width: 30vw;
@@ -83,14 +83,7 @@
         border-radius: 50px;
         max-width: 200px;
         opacity: 0;
-        transition: opacity 1s ease-in-out;
-      }
-      .bubble {
-        position: absolute;
-        background-color: rgba(255, 255, 255, 0.9);
-        border-radius: 50%;
-        opacity: 0;
-        transition: opacity 1s ease-in-out;
+        transition: opacity 2s ease-in-out, transform 10s linear;
       }
     </style>
   </head>
@@ -127,8 +120,8 @@
       const thoughts = [
         "I could certainly use a stiff one... COCKTAIL, that is.",
         "Keeping it simple.",
-        "Channel your anger into something productive.",
-        "Your emotions are my food.",
+        "I've been trying to channel my anger into something productive.",
+        "Your emotions are food for my soul.",
         "Stop lookin' at me like that.",
         "My balls itch.",
       ];
@@ -158,16 +151,6 @@
         ];
       }
 
-      function createBubble(size, x, y) {
-        const bubble = document.createElement("div");
-        bubble.className = "bubble";
-        bubble.style.width = `${size}px`;
-        bubble.style.height = `${size}px`;
-        bubble.style.left = `calc(50% + ${x}px)`;
-        bubble.style.top = `calc(50% + ${y}px)`;
-        return bubble;
-      }
-
       function animateThoughtBubbles() {
         const container = document.getElementById("thought-container");
         const head = document.getElementById("hanging-head");
@@ -182,36 +165,31 @@
           const thoughtBubble = document.createElement("div");
           thoughtBubble.className = "thought-bubble";
           thoughtBubble.textContent = thoughts[currentThoughtIndex];
-          currentThoughtIndex = (currentThoughtIndex + 1) % thoughts.length;
+
+          const messageLength = thoughts[currentThoughtIndex].length;
+          const displayTime = Math.max(5000, messageLength * 100); // Minimum 5 seconds, or 100ms per character
+
+          const direction = Math.random() < 0.5 ? -1 : 1; // -1 for left, 1 for right
+          const moveDistance = 100 * direction; // 100px left or right
 
           thoughtBubble.style.left = `calc(50% + ${x}px)`;
           thoughtBubble.style.top = `calc(50% + ${y}px)`;
 
           container.appendChild(thoughtBubble);
 
-          if (isPortrait) {
-            container.appendChild(createBubble(20, x, y - 30));
-            container.appendChild(createBubble(10, x, y - 50));
-          } else {
-            container.appendChild(createBubble(20, x * 0.7, y * 0.7));
-            container.appendChild(createBubble(10, x * 0.4, y * 0.4));
-          }
-
           setTimeout(() => {
             thoughtBubble.style.opacity = "1";
-            container.querySelectorAll(".bubble").forEach((bubble) => {
-              bubble.style.opacity = "1";
-            });
+            thoughtBubble.style.transform = `translateX(${moveDistance}px)`;
           }, 100);
 
           setTimeout(() => {
             thoughtBubble.style.opacity = "0";
-            container.querySelectorAll(".bubble").forEach((bubble) => {
-              bubble.style.opacity = "0";
-            });
-          }, 6000);
+          }, displayTime + 2000); // Start fading out after display time
 
-          setTimeout(showNextThought, 7000);
+          setTimeout(() => {
+            currentThoughtIndex = (currentThoughtIndex + 1) % thoughts.length;
+            showNextThought();
+          }, displayTime + 4000); // Wait for fade out before showing next thought
         }
 
         showNextThought();
