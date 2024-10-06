@@ -1,0 +1,44 @@
+Folder PATH listing for volume T7 Shield
+Volume serial number is 60AF-252A
+F:.
+|   README.md
+|   index.html
+|   script.js
+|   styles.css
+|   file_structure.txt
+|   
+\---src
+    +---assets
+    |   +---originals
+    |   |   |   20241004_114024.jpg
+    |   |   |   20241004_114024.psd
+    |   |   |   20241004.ai
+    |   |   |   
+    |   |   \---1x
+    |   |           Artboard 1.png
+    |   |           
+    |   +---logos
+    |   |       dhlogo.ai
+    |   |       prototypes.svg
+    |   |       dh_black.svg
+    |   |       dh_white.svg
+    |   |       
+    |   +---socials
+    |   |   \---tiktok
+    |   |           The Disembodied Head Intro.mp4
+    |   |           The Disembodied Head 1080p.mp4
+    |   |           
+    |   \---images
+    |           head.png
+    |           headsvg.txt
+    |           head.svg
+    |           
+    +---data
+    |       thoughts.js
+    |       
+    \---utils
+            position.js
+            style.js
+            animation.js
+            api.js
+            
