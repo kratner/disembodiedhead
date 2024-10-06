@@ -1,5 +1,5 @@
 export const thoughts = [
-  "I could certainly use a stiff cocktail.",
+  "Make mine an Old Fashioned.",
   "Keeping it simple.",
   "I've been trying to channel my anger into something productive.",
   "Your emotions are food for my soul.",
