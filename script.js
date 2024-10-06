@@ -8,7 +8,7 @@ const config = {
   overlay: {
     minOpacity: 0.7,
     maxOpacity: 0.9,
-    opacityStep: 0.0005,
+    opacityStep: 0.0001,
   },
   weatherProbability: 0.2,
   background: {
