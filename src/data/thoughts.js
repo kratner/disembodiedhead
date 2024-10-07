@@ -1,4 +1,5 @@
 export const thoughts = [
+  "Fluid Dynamics",
   "Make mine an Old Fashioned.",
   "Keeping it simple.",
   "I've been trying to channel my anger into something productive.",
