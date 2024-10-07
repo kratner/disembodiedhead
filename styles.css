@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap");
+
 :root {
   --logo-width: 100px;
   --animation-duration: 20s;
@@ -9,9 +11,9 @@ html {
   padding: 0;
   height: 100%;
   overflow: hidden;
-  /* background-color: black; /* This ensures a black background from the start */
+  background-color: black; /* This ensures a black background from the start */
   color: white;
-  font-family: Arial, sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 #background-canvas {
@@ -109,23 +111,26 @@ html {
 
 .thought-bubble {
   position: absolute;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.85);
   color: black;
-  padding: 15px;
+  padding: 15px 20px;
   border-radius: 20px;
-  max-width: 200px;
+  max-width: 250px;
   opacity: 0;
-  transition: opacity 1s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
+  font-size: 16px;
+  font-weight: 300;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   z-index: 1000;
 }
 
 .callout-line {
   position: absolute;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.5);
   height: 2px;
   transform-origin: 0 0;
   opacity: 0;
-  transition: opacity 1s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
   z-index: 500;
 }
 

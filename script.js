@@ -77,20 +77,23 @@ document.addEventListener("DOMContentLoaded", () => {
     const endY = bubbleRect.top + bubbleRect.height / 2;
 
     const angle = Math.atan2(endY - startY, endX - startX);
-    const length = Math.sqrt(
-      Math.pow(endX - startX, 2) + Math.pow(endY - startY, 2)
-    );
+    const length = Math.sqrt((endX - startX) ** 2 + (endY - startY) ** 2);
 
-    line.style.width = `${length}px`;
-    line.style.left = `${startX}px`;
-    line.style.top = `${startY}px`;
+    // Adjust the line to not fully extend to the head or bubble
+    const shortenedLength = length - 40; // Shorten by 40px (20px on each end)
+    const adjustedStartX = startX + 20 * Math.cos(angle);
+    const adjustedStartY = startY + 20 * Math.sin(angle);
+
+    line.style.width = `${shortenedLength}px`;
+    line.style.left = `${adjustedStartX}px`;
+    line.style.top = `${adjustedStartY}px`;
     line.style.transform = `rotate(${angle}rad)`;
   }
 
   async function updateWeatherAndBackground(lat, lon) {
     try {
       weatherData = await fetchWeather(lat, lon);
-      if (weatherData && weatherData.name) {
+      if (weatherData?.name) {
         await fetchBackgroundMedia(weatherData.name, config.background);
       } else {
         throw new Error("Invalid weather data");
@@ -102,7 +105,11 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function getWeatherThought() {
-    if (weatherData && weatherData.weather && weatherData.main) {
+    if (
+      weatherData?.weather?.[0]?.description &&
+      weatherData?.main?.temp &&
+      weatherData?.name
+    ) {
       const temp = (weatherData.main.temp - 273.15).toFixed(1);
       const description = weatherData.weather[0].description;
       const cityName = weatherData.name;
