@@ -90,14 +90,22 @@ html {
 
 #hanging-head {
   position: fixed;
-  top: -5vh;
+  top: -95vh; /* Move the head up by one-third of the viewport height */
   left: 50%;
   transform: translateX(-50%);
-  width: 30vw;
-  max-width: 300px;
+  width: 20vw; /* Adjust width for landscape */
+  max-width: 200px; /* Ensure it doesn't get too large */
   height: auto;
   animation: swing 4s ease-in-out infinite;
-  transform-origin: top center;
+  transform-origin: middle center;
+}
+
+@media (orientation: portrait) {
+  #hanging-head {
+    top: -60vh; /* Move the head up by one-third of the viewport height */
+    width: 40vw; /* Adjust width for portrait */
+    max-width: 300px; /* Ensure it doesn't get too large */
+  }
 }
 
 #thought-container {
