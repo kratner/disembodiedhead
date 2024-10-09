@@ -5,4 +5,8 @@ export const thoughts = [
   "All reality. ALL the time.",
   "Stop lookin' at me like that.",
   "My balls itch.",
+  "I'm an Independent.",
+  "I need to practice my scales.",
+  "My singing voice ain't what it used to be.",
+  "They're keeping me alive.",
 ];
