@@ -142,6 +142,20 @@ html {
   z-index: 500;
 }
 
+#copyright {
+  position: fixed;
+  bottom: 10px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-family: Arial, sans-serif;
+  font-size: 0.8rem;
+  z-index: 1000;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
 @keyframes moveLogo {
   0% {
     transform: translateX(0);
