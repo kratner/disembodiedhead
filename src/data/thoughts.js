@@ -12,4 +12,5 @@ export const thoughts = [
   "Once in a while, I get a hankering for smoked oysters.",
   "It can be difficult being an empath, but it's better than being a sociopath. I think.",
   "High-Precision Biosensors leveraging the Casimir Effect could revolutionize early disease detection.",
+  "I strongly support further research in the field of Quantum Computing.",
 ];
